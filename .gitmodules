@@ -1,0 +1,3 @@
+[submodule "Arabic-NER/klaam"]
+	path = Arabic-NER/klaam
+	url = https://github.com/ARBML/klaam
