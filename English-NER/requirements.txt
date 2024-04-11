@@ -1,3 +1,5 @@
 transformers
 pydub
 torch
+nltk
+librosa

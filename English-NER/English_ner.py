@@ -59,4 +59,4 @@ nermodel = AutoModelForTokenClassification.from_pretrained("Jean-Baptiste/robert
 
 
 nlp = pipeline('ner', model=nermodel, tokenizer=nertokenizer, aggregation_strategy="simple")
-nlp(text)
+print(nlp(text))
