@@ -18,6 +18,7 @@ When installing in Windows environment
 ./venv/scripts activate
 
 ```
+Install required libraries
 ```
 pip install -r requirements.txt
 
