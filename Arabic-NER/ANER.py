@@ -15,6 +15,43 @@ from transformers import pipeline
 import time
 
 
+def levenshtein_distance(s1, s2):
+    if len(s1) > len(s2):
+        s1, s2 = s2, s1
+
+    distances = range(len(s1) + 1)
+    for index2, char2 in enumerate(s2):
+        new_distances = [index2 + 1]
+        for index1, char1 in enumerate(s1):
+            if char1 == char2:
+                new_distances.append(distances[index1])
+            else:
+                new_distances.append(1 + min((distances[index1], distances[index1 + 1], new_distances[-1])))
+        distances = new_distances
+
+    return distances[-1]
+
+def find_closest_name(input_name, name_list):
+    closest_distance = float('inf')
+    closest_names = None
+    
+    for first_name, last_name in name_list:
+        distance_first = levenshtein_distance(input_name, first_name)
+        distance_last = levenshtein_distance(input_name, last_name)
+        if distance_first < closest_distance or distance_last < closest_distance:
+            closest_distance = min(distance_first, distance_last)
+            closest_names = (first_name, last_name)
+    
+    # Adjust the threshold factor based on your preference
+    threshold_factor = 0.8
+    if closest_distance > len(input_name) * threshold_factor:
+        return None
+    
+    return closest_names
+
+# Example usage:
+names = [('عمر ','فايد'), ('Abdelrahman','Said'), ('Youssef','Amr'), ('Reem','Ahmed'), ('Renad','Elkady'), ('Sherif','Sakran')]
+
 asrmodel = SpeechRecognition()
 text=asrmodel.transcribe('demo.wav')
 # Load the model
@@ -42,3 +79,6 @@ for sentence in annotations:
 
 for item, label in zip(entities, tags):
   print(item + "\t" + label)
+  if label == 'B-PERSON':
+      n = find_closest_name(item,names)
+      print (n)
