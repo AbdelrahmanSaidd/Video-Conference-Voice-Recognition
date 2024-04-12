@@ -8,12 +8,17 @@ First install the required libraries
 python3 -m venv venv
 
 ```
-
+When installing in linux environment
 ```
 source venv/bin/activate
 
 ```
+When installing in Windows environment
+```
+./venv/scripts activate
 
+```
+Install required libraries
 ```
 pip install -r requirements.txt
 
