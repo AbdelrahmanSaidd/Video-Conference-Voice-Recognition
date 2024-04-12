@@ -1,6 +1,6 @@
 # English Automatic Speech Recognition and Named Entity Recognition System.
 
-The system Recognises Arabic Speech and uses the recognised speech to detect Named entities:  
+The system Recognises English Speech and uses the recognised speech to detect Named entities:  
 ## Running the code
 First install the required libraries
 
@@ -18,7 +18,7 @@ When installing in Windows environment
 ./venv/scripts activate
 
 ```
-Install required libraries
+Install required modules
 ```
 pip install -r requirements.txt
 

@@ -1,3 +1,10 @@
+import sys
+
+# Add the directory containing your module to the Python path
+sys.path.append('klaam')
+
+# Now you can import your module
+import klaam
 from klaam import SpeechRecognition
 import nltk
 nltk.download('punkt')  # Download the required tokenizer data
@@ -6,7 +13,7 @@ from transformers import AutoModelForTokenClassification, AutoTokenizer
 from transformers import pipeline
 #from helpers import split_sentences
 import time
-from klaam import SpeechRecognition
+
 
 asrmodel = SpeechRecognition()
 text=asrmodel.transcribe('demo.wav')
@@ -19,7 +26,6 @@ nlp = pipeline("ner", model=model, tokenizer=tokenizer)
 
 # Tag the text
 start_time = time.time()
-#text = 'رغم الهدنة .. معارك قره باغ متواصلة وأذربيجان تعلن سيطرتها على مزيد من القرى'
 sentences = nltk.sent_tokenize(text)
 
 annotations = nlp(sentences)
