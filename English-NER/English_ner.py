@@ -97,4 +97,14 @@ nermodel = AutoModelForTokenClassification.from_pretrained("Jean-Baptiste/robert
 
 
 nlp = pipeline('ner', model=nermodel, tokenizer=nertokenizer, aggregation_strategy="simple")
-print(nlp(text))
+n= nlp(text)
+for entity in n:
+      print (entity)
+      #print ("next")
+      if entity["entity_group"] == 'PER':
+          detected_name = find_closest_name(entity["word"],names)
+          print(detected_name)
+        
+      
+
+      
