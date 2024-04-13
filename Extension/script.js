@@ -5,16 +5,12 @@ window.onload = function() {
     let speakerElement;
     let isSpeaking = false;
 
-    // function to edit the meeting title with the speaker's name
-    setTimeout(function() {
-        speakerElement = document.querySelector('.ouH3xe');
-        if (speakerElement) {
-            speakerElement.textContent = 'Speaker: ';
-        } else {
-            console.error('Speaker element not found.');
-        }
-    }, 3000);
-    
+    // Create a new element to display the speaker's name
+    speakerElement = document.createElement('div');
+    speakerElement.id = 'speakerElement';
+    speakerElement.textContent = 'Speaker: ';
+    speakerElement.style.fontSize = '25px';
+    document.body.appendChild(speakerElement);
 
     //recording function
     function startRecording(stream) {
@@ -79,26 +75,16 @@ window.onload = function() {
             harker.on('speaking', function() {
             console.log('Voice activity detected, starting recording...');
             
-            speakerElement = document.querySelector('.ouH3xe');
-            if (speakerElement) {
-                speakerElement.textContent = 'Speaker: Joe';
-            } else {
-                console.error('Speaker element not found.');
-            }
+            speakerElement.textContent = 'Speaker: Joe';
                 
-                isSpeaking = true; 
-                startRecording(stream);
+            isSpeaking = true; 
+            startRecording(stream);
             });
 
             harker.on('stopped_speaking', function() {
                 console.log('Voice activity stopped.');
 
-                speakerElement = document.querySelector('.ouH3xe');
-                if (speakerElement) {
-                    speakerElement.textContent = 'Speaker:';
-                } else {
-                    console.error('Speaker element not found.');
-                }
+                speakerElement.textContent = 'Speaker:';
 
                 isSpeaking = false; 
                 mediaRecorder.stop();
