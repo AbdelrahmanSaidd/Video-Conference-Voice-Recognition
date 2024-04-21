@@ -50,7 +50,7 @@ def find_closest_name(input_name, name_list):
     return closest_names
 
 # Example usage:
-names = [('عمر ','فايد'), ('Abdelrahman','Said'), ('Youssef','Amr'), ('Reem','Ahmed'), ('Renad','Elkady'), ('Sherif','Sakran')]
+names = [('عمر ','فايد'), ('يوسف','عمرو'), ('شريف','سكران'), ('ريناد','القادي'), ('عبدالرحمن','سعيد'), ('ريم','سعيد')]
 
 asrmodel = SpeechRecognition()
 text=asrmodel.transcribe('demo.wav')
@@ -66,9 +66,11 @@ start_time = time.time()
 sentences = nltk.sent_tokenize(text)
 
 annotations = nlp(sentences)
-
+# -*- coding: utf-8 -*-
 entities = []
 tags = []
+arabic= text.encode("utf-8")
+print(arabic.decode("utf-8"))
 for sentence in annotations:
   for item in sentence:
     if item["word"].startswith("##"):
