@@ -1,6 +1,6 @@
 # The Server side for the Google Chrome Extension
 
-The system Recognises Arabic Speech and uses the recognised speech to detect Named entities:  
+
 ## Running the code
 First install the required libraries
 
