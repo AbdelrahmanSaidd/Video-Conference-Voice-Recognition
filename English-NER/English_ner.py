@@ -95,6 +95,16 @@ print(text)
 nertokenizer = AutoTokenizer.from_pretrained("Jean-Baptiste/roberta-large-ner-english")
 nermodel = AutoModelForTokenClassification.from_pretrained("Jean-Baptiste/roberta-large-ner-english")
 
+qa_pipeline_roberta = pipeline("question-answering", model="consciousAI/question-answering-roberta-base-s-v2")
+
+
+context = text
+question = "What's my name?"
+answer = qa_pipeline_roberta(question=question, context=context)
+
+# Print answer
+print(f"Question: {question}")
+print(f"Answer: {answer['answer']}")
 
 nlp = pipeline('ner', model=nermodel, tokenizer=nertokenizer, aggregation_strategy="simple")
 n= nlp(text)
@@ -102,8 +112,9 @@ for entity in n:
       print (entity)
       #print ("next")
       if entity["entity_group"] == 'PER':
-          detected_name = find_closest_name(entity["word"],names)
-          print(detected_name)
+          if entity["word"] == answer:
+            detected_name = find_closest_name(entity["word"],names)
+            print(detected_name)
         
       
 
