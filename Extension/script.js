@@ -6,11 +6,11 @@ window.onload = function() {
     let isSpeaking = false;
 
     // Create a new element to display the speaker's name
-    speakerElement = document.createElement('div');
-    speakerElement.id = 'speakerElement';
-    speakerElement.textContent = 'Speaker: ';
-    speakerElement.style.fontSize = '25px';
-    document.body.appendChild(speakerElement);
+    // speakerElement = document.createElement('div');
+    // speakerElement.id = 'speakerElement';
+    // speakerElement.textContent = 'Speaker: ';
+    // speakerElement.style.fontSize = '25px';
+    // document.body.appendChild(speakerElement);
 
     //recording function
     function startRecording(stream) {
@@ -28,7 +28,7 @@ window.onload = function() {
                 const formData = new FormData();
                 formData.append('audio', base64data);
 
-                fetch('http://localhost:8000', {
+                fetch('http://192.168.64.2:8000', {
                     method: 'POST',
                     body: formData
                 })
@@ -75,7 +75,7 @@ window.onload = function() {
             harker.on('speaking', function() {
             console.log('Voice activity detected, starting recording...');
             
-            speakerElement.textContent = 'Speaker: Joe';
+            // speakerElement.textContent = 'Speaker: Joe';
                 
             isSpeaking = true; 
             startRecording(stream);
@@ -84,7 +84,7 @@ window.onload = function() {
             harker.on('stopped_speaking', function() {
                 console.log('Voice activity stopped.');
 
-                speakerElement.textContent = 'Speaker:';
+                // speakerElement.textContent = 'Speaker:';
 
                 isSpeaking = false; 
                 mediaRecorder.stop();
@@ -95,3 +95,4 @@ window.onload = function() {
             console.error('Error accessing microphone:', error);
         });
 };
+
