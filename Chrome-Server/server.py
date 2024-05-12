@@ -6,8 +6,9 @@ from flask import Flask, request
 from werkzeug.utils import secure_filename
 from pydub import AudioSegment
 import os
-
 import socket
+
+
 
 def check_port(ip_address, port):
     # Create a socket object
@@ -29,7 +30,7 @@ def check_port(ip_address, port):
         sock.close()
 
 # Example usage:
-check_port("127.0.0.1", 5000)
+check_port("192.168.64.2", 8000)
 
 app = Flask(__name__)
 
@@ -84,4 +85,4 @@ def process_audio():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=8000)
