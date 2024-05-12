@@ -18,6 +18,6 @@ RUN apt-get update && \
 # Define environment variable
 ENV NAME World
 # Expose port 5000 to the outside world
-EXPOSE 5000
+EXPOSE 8000
 # Run app.py when the container launches
 CMD ["python", "server.py", "run", "--host", "0.0.0.0"]
