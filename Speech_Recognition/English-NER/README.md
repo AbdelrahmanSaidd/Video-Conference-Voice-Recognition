@@ -33,7 +33,7 @@ python English_ner.py
 
 ## To run the Code using Docker
 
-Build Image using Comman below
+Build Image using Command below
 
 ```
 docker build -t image_name
