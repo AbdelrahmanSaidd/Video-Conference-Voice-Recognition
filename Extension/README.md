@@ -1,4 +1,4 @@
-# Google Chrom Extension
+# Google Chrome Extension
  
 ## Installing the Extension on Google Chrome
 Open The 'Manage Extensions' Section on Google Chrome 
