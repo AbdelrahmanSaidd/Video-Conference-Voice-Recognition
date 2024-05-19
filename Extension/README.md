@@ -5,7 +5,6 @@ Open The 'Manage Extensions' Section on Google Chrome
 
 ```
 Setting -> Extension -> Manage Extensions
-
 ```
 Turn On the Developer Mode
 
@@ -14,7 +13,6 @@ Turn On the Developer Mode
 Press on 'Load Unpacked' and Upload This Directory
 ```
 Make sure to allow mic access
-
 ```
 
 
