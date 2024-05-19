@@ -53,7 +53,7 @@ def find_closest_name(input_name, name_list):
 names = [('عمر ','فايد'), ('يوسف','عمرو'), ('شريف','سكران'), ('ريناد','القادي'), ('عبدالرحمن','سعيد'), ('ريم','سعيد')]
 
 asrmodel = SpeechRecognition()
-text=asrmodel.transcribe('demo.wav')
+text=asrmodel.transcribe('demo.wav') #Replace demo.wav with the desired input wav file
 # Load the model
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 tokenizer = AutoTokenizer.from_pretrained("hatmimoha/arabic-ner")
