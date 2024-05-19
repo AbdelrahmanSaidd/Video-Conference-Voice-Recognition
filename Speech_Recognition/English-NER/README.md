@@ -2,6 +2,8 @@
 
 The system Recognises English Speech and uses the recognised speech to detect Named entities:  
 ## Running the code
+
+## To run the Code locally without Docker
 First install the required libraries
 
 ```
@@ -29,4 +31,16 @@ python English_ner.py
 
 ```
 
+## To run the Code using Docker
 
+Build Image using Comman below
+
+```
+docker build -t image_name
+
+```
+Run the image
+```
+docker run image_name
+
+```
