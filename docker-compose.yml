@@ -1,0 +1,56 @@
+volumes:
+  embeddings:
+  wavefiles:
+  audiospath:
+
+services:
+  # middleware:
+  #   build: ./middleware/
+  #   restart: always
+  #   command: "python3 server.py run --host 0.0.0.0"
+  #   ports:
+  #     - '50000:50000'
+  #   volumes:
+  #     - speaker:/speaker
+
+  embeddingsdb:
+    build: ./Databases/embeddings/
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '8080:3306'
+    volumes:
+      - embeddings:/embeddings
+  
+  speakeridentification:
+    build: ./Speaker-Identification/
+    restart: always
+    command: sh -c "python3 ./live_testing.py"
+    volumes:
+      - embeddings:/embeddings
+      - wavefiles:/wavefiles
+      - audiospath:/audiospath
+
+
+  server:
+    build: ./Chrome-Server/
+    restart: always
+    command: "pip install flask_cors; python3 server.py run --host 0.0.0.0"
+    ports:
+      - '50000:50000'
+    volumes:
+      - wavefiles:/wavefiles
+      - audiospath:/audiospath
+  
+  engner:
+    build: ./English-NER/
+    restart: always
+    command: sh -c "python3 ./English_ner.py"
+    depends_on:
+      - embeddingsdb
+    volumes:
+      - embeddings:/embeddings
+      - wavefiles:/wavefiles
+      - audiospath:/audiospath
+
