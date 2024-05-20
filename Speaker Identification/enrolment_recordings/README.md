@@ -1,1 +1,0 @@
-# Add recordings here to create speakers' models and train a CNN
