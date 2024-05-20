@@ -3,3 +3,4 @@ pydub
 torch
 nltk
 librosa
+mysql-connector-python
